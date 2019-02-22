@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
+    // You can customize your own functionalilty of get and set like this!
+    //{
+    //    get
+    //    {
+    //        Debug.Log("I'm getting the instance");
+    //        return instance;
+    //    }
+    //    private set
+    //    {
+    //        instance = value;
+    //    }
+    //}
     public AudioSource m_BGMPlayer, m_SFXPlayer;
 
     void Awake()
@@ -19,6 +31,16 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
+    //public static AudioManager GetInstance()
+    //{
+    //    return instance;
+    //}
+
+    //private static void SetInstance(AudioManager newInstance)
+    //{
+    //    instance = newInstance;
+    //}
 
     public void PlaySFX(string clip)
     {

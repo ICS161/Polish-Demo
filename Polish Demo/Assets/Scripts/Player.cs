@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IHealable, IDamageable
 {
-    //AudioSource m_audioSource;
-
-    //void Awake()
-    //{
-    //    m_audioSource = this.GetComponent<AudioSource>();
-    //}
-
-    //public AudioClip shootSFX;
-    //public AudioClip jumpSFX;
+    public int health = 100;
 
     void Update()
     {
@@ -29,12 +21,21 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        //m_audioSource.Play();
         AudioManager.instance.PlaySFX("Shoot");
     }
 
     void Jump()
     {
         AudioManager.instance.PlaySFX("Jump");
+    }
+
+    public void AddHealth(int healthDelta)
+    {
+        health += healthDelta;
+    }
+
+    public void LoseHealth(int healthDelta)
+    {
+        health -= healthDelta;
     }
 }
